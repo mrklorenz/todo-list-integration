@@ -33,6 +33,10 @@ public class TodoService {
         return todoRepository.save(updatedTodo);
     }
 
+    public void deleteTodo(int todoId){
+        todoRepository.deleteById(todoId);
+    }
+
     public Todo updateTodoIsDone(Todo todo, Todo todoDetails){
         if(todo.isDone() != todoDetails.isDone()){
             todo.setDone(todoDetails.isDone());
