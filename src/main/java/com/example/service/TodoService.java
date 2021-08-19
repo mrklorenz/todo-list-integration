@@ -24,4 +24,19 @@ public class TodoService {
     public Todo addToDo(Todo todo){
         return todoRepository.save(todo);
     }
+
+    public Todo updateTodo(int todoId, Todo todoDetails){
+        Todo updatedTodo =  todoRepository.findById(todoId)
+                .map(todo -> updateTodoIsDone(todo, todoDetails))
+                .get();
+
+        return todoRepository.save(updatedTodo);
+    }
+
+    public Todo updateTodoIsDone(Todo todo, Todo todoDetails){
+        if(todo.isDone() != todoDetails.isDone()){
+            todo.setDone(todoDetails.isDone());
+        }
+        return todo;
+    }
 }
