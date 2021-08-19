@@ -13,9 +13,9 @@ public class CorsGlobalConfiguration {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/todos")
-                        .allowedOrigins("http://localhost:8080")
-                        .allowedMethods("GET", "PUT" ,"POST", "DELETE");
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:3000")
+                        .allowedMethods("GET");
             }
         };
     }
